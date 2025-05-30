@@ -54,8 +54,10 @@ jobs:
       with: { version: v1.29.4 }
 
     - name: Write kubeconfig
-      run: echo "${KUBE_CONFIG}" | base64 -d > $HOME/.kube/config
-      env: { KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }} }
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+      run: echo "$KUBE_CONFIG" | base64 -d > $HOME/.kube/config
+
 
     - name: Image tag substitution
       run: |
