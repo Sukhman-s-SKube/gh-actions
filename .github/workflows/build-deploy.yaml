@@ -48,6 +48,7 @@ jobs:
         file:   ${{ inputs.DOCKERFILE_PATH }}
         platforms: linux/amd64
         push: true
+        push-args: --tls-verify=false
         tags: |
           ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ env.TAG }}
           ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest
