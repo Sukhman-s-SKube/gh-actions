@@ -13,8 +13,7 @@ A reusable GitHub Actions workflow for building a Docker image, pushing it to a 
   - [Secrets](#secrets)  
 - [How It Works](#how-it-works)  
 - [Example](#example)  
-- [Requirements](#requirements)  
-- [License](#license)  
+- [Requirements](#requirements)   
 
 ---
 
