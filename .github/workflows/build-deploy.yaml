@@ -67,7 +67,8 @@ jobs:
 
     - name: Image tag substitution
       run: |
-        sed -i "s|IMAGE_PLACEHOLDER|${REGISTRY}/${IMAGE}:${TAG}|g" "${{ inputs.MANIFEST_PATH }}"
+        find "${{ inputs.MANIFEST_PATH }}" -type f -name '*.yaml' \
+          -exec sed -i "s|IMAGE_PLACEHOLDER|${REGISTRY}/${IMAGE}:${TAG}|g" {} +
 
     - name: Apply manifest
       run: kubectl apply -n "${{ inputs.KUBE_NAMESPACE }}" -f "${{ inputs.MANIFEST_PATH }}"
