@@ -29,6 +29,11 @@ jobs:
     - name: Set up Buildx
       uses: docker/setup-buildx-action@v3
 
+    - name: Set up Buildx (use host Docker daemon)
+      uses: docker/setup-buildx-action@v3
+      with:
+        driver: docker
+
     - name: Login to Harbor
       uses: docker/login-action@v3
       with:
