@@ -73,6 +73,13 @@ jobs:
     - name: Apply manifest
       run: kubectl apply -n "${{ inputs.KUBE_NAMESPACE }}" -f "${{ inputs.MANIFEST_PATH }}"
 
+    - name: Install yq
+      run: |
+        sudo wget -qO /usr/local/bin/yq \
+          https://github.com/mikefarah/yq/releases/download/v4.44.1/yq_linux_amd64
+        sudo chmod +x /usr/local/bin/yq
+
+
     - name: Wait for rollout
       run: |
         kubectl rollout status deploy $(yq '.metadata.name' "${{ inputs.MANIFEST_PATH }}") \
